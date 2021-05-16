@@ -42,6 +42,8 @@ Route::get('categories/create', [CategoryController::class, 'create'])->name('ca
 
 Route::post('categories', [CategoryController::class, 'store'])->name('category.store');
 
+// show
+
 Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 
 Route::put('categories/{category}', [CategoryController::class, 'update'])->name('category.update');
@@ -49,9 +51,19 @@ Route::put('categories/{category}', [CategoryController::class, 'update'])->name
 Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 // clients
-Route::get('clients', [ClientController::class, 'index']);
+Route::get('clients', [ClientController::class, 'index'])->name('client.index');
+
+Route::get('clients/create', [ClientController::class, 'create'])->name('client.create');
+
+Route::post('clients', [ClientController::class, 'store'])->name('client.store');
 
 Route::get('clients/{client}', [ClientController::class, 'show'])->name('client.show');
+
+Route::get('clients/{client}/edit', [ClientController::class, 'edit'])->name('client.edit');
+
+Route::put('clients/{client}', [ClientController::class, 'update'])->name('client.update');
+
+Route::delete('clients/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
 
 // products
 Route::get('products', [ProductController::class, 'index']);

@@ -29,7 +29,7 @@ class StoreRequest extends FormRequest
             'ruc' => 'max:11|min:11|unique:clients,ruc',
             'address' => 'string|max:255',
             'phone' => 'string|max:9|min:9|unique:clients,phone',
-            'email' => 'string|email:rfc,dns|unique:clients'
+            'email' => 'string|email:rfc,dns|unique:clients,email'
         ];
     }
 

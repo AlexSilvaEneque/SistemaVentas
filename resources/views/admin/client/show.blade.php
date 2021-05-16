@@ -7,12 +7,13 @@
 @stop
 
 @section('content')
-    {{$client->name}}
+    show client
+    {{-- {{$client->name}}
     {{$client->dni}}
     {{$client->ruc}}
     {{$client->address}}
     {{$client->phone}}
-    {{$client->email}}
+    {{$client->email}} --}}
 @stop
 
 @section('css')

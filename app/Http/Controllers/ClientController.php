@@ -38,8 +38,16 @@ class ClientController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Client::create($request->all());
-        return redirect()->route('clients.index');
+        $client = new Client;
+        $client->name = $request->name;
+        $client->dni = $request->dni;
+        $client->ruc = $request->ruc;
+        $client->address = $request->address;
+        $client->phone = $request->phone;
+        $client->email = $request->email;
+
+        $client->save();
+        return redirect()->route('client.index');
     }
 
     /**
@@ -50,7 +58,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        // $client = Client::find($client);
+        $client = Client::find($client);
         return view('admin.client.show', compact('client'));
     }
 
@@ -75,7 +83,7 @@ class ClientController extends Controller
     public function update(UpdateRequest $request, Client $client)
     {
         $client->update($request->all());
-        return redirect()->route('clients.index');
+        return redirect()->route('client.index');
     }
 
     /**
@@ -87,6 +95,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index');
+        return redirect()->route('client.index');
     }
 }
