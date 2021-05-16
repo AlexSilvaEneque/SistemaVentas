@@ -35,22 +35,34 @@ Route::get('/', function () {
 //     return view('layouts.admin');
 // })->name('dash');
 
-Route::get('categories', [CategoryController::class, 'index']);
+// categories
+Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 
 Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
 
-Route::post('categories', [CategoryController::class, 'store']);
+Route::post('categories', [CategoryController::class, 'store'])->name('category.store');
 
+Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+
+Route::put('categories/{category}', [CategoryController::class, 'update'])->name('category.update');
+
+Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+// clients
 Route::get('clients', [ClientController::class, 'index']);
 
 Route::get('clients/{client}', [ClientController::class, 'show'])->name('client.show');
 
+// products
 Route::get('products', [ProductController::class, 'index']);
 
+// providers
 Route::get('providers', [ProviderController::class, 'index']);
 
+// purhcases
 Route::get('purchases', [PurchaseController::class, 'index']);
 
+// sales
 Route::get('sales', [SaleController::class, 'index']);
 
 

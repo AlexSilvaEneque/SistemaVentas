@@ -38,8 +38,13 @@ class CategoryController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Category::create($request->all());
-        return redirect()->route('categories.index');
+        $category = new Category;
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+
+        $category->save();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -75,7 +80,7 @@ class CategoryController extends Controller
     public function update(UpdateRequest $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -87,6 +92,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index');
     }
 }

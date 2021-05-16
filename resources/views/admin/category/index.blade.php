@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Prueba')
+@section('title', 'Categories')
 
 @section('content_header')
     <h1>Categories</h1>
@@ -8,7 +8,8 @@
 
 @section('content')
     <div class="container mt-2">
-        <button type="button" class="btn btn-outline-primary text-lg"><a href="{{route('category.create')}}"><i class="bi bi-plus-circle-fill"></i></a></button>
+        {{-- <button type="button" class="btn btn-outline-primary text-lg"><a href="{{route('category.create')}}"><i class="bi bi-plus-circle-fill"></i></a></button> --}}
+        <a href="{{route('category.create')}}" class="btn btn-outline-primary"><i class="bi bi-plus-circle-fill" style="font-size: 1.2em;"></i></a>
         <div class="card mt-2">
             <div class="card-body">
                 <div class="text-right">
@@ -37,8 +38,15 @@
                                 <td> {{$category->name}} </td>
                                 <td> {{$category->description}} </td>
                                 <td>
-                                    <button class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></button>
-                                    <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    <div class="container d-flex">
+                                        <a href="{{route('category.edit', $category)}}" class="btn btn-outline-success mr-2"><i class="bi bi-pencil-square"></i></a>
+
+                                        <form action="{{route('category.destroy', $category)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
