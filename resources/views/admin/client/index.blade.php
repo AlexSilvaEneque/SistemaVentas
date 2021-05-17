@@ -11,6 +11,16 @@
         <a href="{{route('client.create')}}" class="btn btn-outline-primary"><i class="bi bi-plus-circle-fill" style="font-size: 1.2em;"></i></a>
         <div class="card mt-2">
             <div class="card-body">
+                <div class="text-right">
+                    <div class="btn-group">
+                        <h4 class="card-title text-right">
+                            <a href="#">
+                                <i class="bi bi-cloud-download"></i>
+                                Export
+                            </a>
+                        </h4>
+                    </div>
+                </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -26,7 +36,7 @@
                         @foreach ($clients as $client)                        
                             <tr>
                                 <td> {{$client->id}} </td>
-                                <td> {{$client->name}} </td>
+                                <td> <a href="{{route('client.show', $client->id)}}"> {{$client->name}} </a></td>
                                 <td> {{$client->dni}} </td>
                                 <td> {{$client->address}} </td>
                                 <td> {{$client->phone}} </td>                            

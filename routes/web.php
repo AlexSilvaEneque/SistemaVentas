@@ -42,8 +42,6 @@ Route::get('categories/create', [CategoryController::class, 'create'])->name('ca
 
 Route::post('categories', [CategoryController::class, 'store'])->name('category.store');
 
-// show
-
 Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 
 Route::put('categories/{category}', [CategoryController::class, 'update'])->name('category.update');

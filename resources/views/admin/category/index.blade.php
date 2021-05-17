@@ -11,17 +11,7 @@
         {{-- <button type="button" class="btn btn-outline-primary text-lg"><a href="{{route('category.create')}}"><i class="bi bi-plus-circle-fill"></i></a></button> --}}
         <a href="{{route('category.create')}}" class="btn btn-outline-primary"><i class="bi bi-plus-circle-fill" style="font-size: 1.2em;"></i></a>
         <div class="card mt-2">
-            <div class="card-body">
-                <div class="text-right">
-                    <div class="btn-group">
-                        <h4 class="card-title text-right">
-                            <a href="#">
-                                <i class="bi bi-cloud-download"></i>
-                                Export
-                            </a>
-                        </h4>
-                    </div>
-                </div>    
+            <div class="card-body">                   
                 <table class="table table-hover">
                     <thead>
                         <tr>

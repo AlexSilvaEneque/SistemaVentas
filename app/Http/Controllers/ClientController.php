@@ -58,7 +58,6 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        $client = Client::find($client);
         return view('admin.client.show', compact('client'));
     }
 
