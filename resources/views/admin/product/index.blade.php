@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Prueba')
+@section('title', 'Product')
 
 @section('content_header')
     <h1>Products</h1>
@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container pt-4">
-        <table class="table table-hover table-dark">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -37,8 +37,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/admin_custom.css">    
 @stop
 
 @section('js')

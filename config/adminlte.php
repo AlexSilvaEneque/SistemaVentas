@@ -237,11 +237,41 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
+            'text'        => 'Dashboard',
             'url'         => '#',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-home',
             'label'       => 4,
             'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Clients',
+            'url'         => 'clients',
+            'icon'        => 'fas fa-user'
+        ],
+        [
+            'text'        => 'Providers',
+            'url'         => 'providers',
+            'icon'        => 'fas fa-users'
+        ],
+        [
+            'text'        => 'Products',
+            'url'         => 'products',
+            'icon'        => 'fas fa-shopping-cart'
+        ],
+        [
+            'text'        => 'Categories',
+            'url'         => 'categories',
+            'icon'        => 'fas fa-bars'
+        ],
+        [
+            'text'        => 'Purchases',
+            'url'         => 'purchases',
+            'icon'        => 'fas fa-tag'
+        ],
+        [
+            'text'        => 'Sales',
+            'url'         => 'sales',
+            'icon'        => 'fas fa-hand-holding-usd'
         ],
         ['header' => 'account_settings'],
         [

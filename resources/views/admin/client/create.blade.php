@@ -10,7 +10,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form action="{{route('client.store')}}" method="POST">
+                <form action="{{route('clients.store')}}" method="POST">
                     @csrf
                     <div class="row px-2">
                         <div class="form-group col-md-6">
@@ -56,7 +56,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary ml-3 px-4 py-2 mr-2">Send</button>
-                        <a href="{{route('client.index')}}" class="btn btn-danger px-4 py-2">Cancel</a>
+                        <a href="{{route('clients.index')}}" class="btn btn-danger px-4 py-2">Cancel</a>
                     </div>
                 </form>
             </div>
@@ -66,8 +66,6 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 @stop
 
 @section('js')

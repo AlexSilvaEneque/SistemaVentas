@@ -1,69 +1,62 @@
 @extends('adminlte::page')
 
-@section('title', 'Client | Edit')
+@section('title', 'Provider | Edit')
 
 @section('content_header')
-    <h1>Clients</h1>
+    <h1>Providers</h1>
 @stop
 
 @section('content')
-    edit client
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form action="{{route('clients.update', $client)}}" method="POST">
+                <form action="{{route('providers.update', $provider)}}" method="POST">
                     @csrf
                     @method('put')
                     <div class="row px-2">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{old('name', $client->name)}}">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{old('name', $provider->name)}}">
                             @error('name')
                                 <small class="text-danger">*{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="dni">Dni</label>
-                            <input type="text" class="form-control" name="dni" id="dni" placeholder="Dni" value="{{old('dni', $client->dni)}}">
-                            @error('dni')
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email', $provider->email)}}">
+                            @error('email')
                                 <small class="text-danger">*{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ruc">Ruc</label>
-                            <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ruc" value="{{old('ruc', $client->ruc)}}">
-                            @error('ruc')
+                            <input type="text" name="ruc_number" id="ruc" class="form-control" placeholder="Ruc" value="{{old('ruc_number', $provider->ruc_number)}}">
+                            @error('ruc_number')
                                 <small class="text-danger">*{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" name="address" id="address" placeholder="Address" value="{{old('address', $client->address)}}">
+                            <input type="text" name="address" id="address" class="form-control" placeholder="Address" value="{{old('address', $provider->address)}}">
                             @error('address')
                                 <small class="text-danger">*{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="phone">Phone</label>
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" value="{{old('phone', $client->phone)}}">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone" value="{{old('phone', $provider->phone)}}">
                             @error('phone')
                                 <small class="text-danger">*{{$message}}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{old('email', $client->email)}}">
-                            @error('email')
-                                <small class="text-danger">*{{$message}}</small>
-                            @enderror
-                        </div>
                         <button type="submit" class="btn btn-primary ml-3 px-4 py-2 mr-2">Send</button>
-                        <a href="{{route('clients.index')}}" class="btn btn-danger px-4 py-2">Cancel</a>
+                        <a href="{{route('providers.index')}}" class="btn btn-danger px-4 py-2">Cancel</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 @stop
 
 @section('css')

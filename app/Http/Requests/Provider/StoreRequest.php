@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:100',
-            'email' => 'required|email|unique:providres,email',
+            'email' => 'required|email|unique:providers,email',
             'ruc_number' => 'required|string|max:11|min:11|unique:providers,ruc_number',
             'address' => 'nullable|string',
             'phone' => 'required|string|max:9|min:9|unique:providers,phone'

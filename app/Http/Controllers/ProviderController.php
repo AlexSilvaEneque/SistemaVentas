@@ -38,7 +38,14 @@ class ProviderController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Provider::create($request->all());
+        $provider = new Provider;
+        $provider->name = $request->name;
+        $provider->email = $request->email;
+        $provider->ruc_number = $request->ruc_number;
+        $provider->address = $request->address;
+        $provider->phone = $request->phone;
+
+        $provider->save();
         return redirect()->route('providers.index');
     }
 
@@ -50,7 +57,6 @@ class ProviderController extends Controller
      */
     public function show(Provider $provider)
     {
-        $provider = Provider::find($provider);
         return view('admin.provider.show', compact('provider'));
     }
 

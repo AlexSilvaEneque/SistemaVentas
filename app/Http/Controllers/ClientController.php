@@ -47,7 +47,7 @@ class ClientController extends Controller
         $client->email = $request->email;
 
         $client->save();
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -82,7 +82,7 @@ class ClientController extends Controller
     public function update(UpdateRequest $request, Client $client)
     {
         $client->update($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -94,6 +94,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 }
