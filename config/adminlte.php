@@ -254,15 +254,15 @@ return [
             'icon'        => 'fas fa-users'
         ],
         [
-            'text'        => 'Products',
-            'url'         => 'products',
-            'icon'        => 'fas fa-shopping-cart'
-        ],
-        [
             'text'        => 'Categories',
             'url'         => 'categories',
             'icon'        => 'fas fa-bars'
         ],
+        [
+            'text'        => 'Products',
+            'url'         => 'products',
+            'icon'        => 'fas fa-shopping-cart'
+        ],        
         [
             'text'        => 'Purchases',
             'url'         => 'purchases',

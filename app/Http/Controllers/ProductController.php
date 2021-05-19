@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -42,7 +42,17 @@ class ProductController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Product::create($request->all());
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/image"), $image_name);
+        }
+
+        $product = Product::create($request->all() + [
+            'image'=>$image_name,
+        ]);
+        $product->update(['code' => $product->id]);
+
         return redirect()->route('products.index');
     }
 
@@ -53,8 +63,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {
-        $product = Product::find($product);
+    {        
         return view('admin.product.show', compact('product'));
     }
 
@@ -80,7 +89,19 @@ class ProductController extends Controller
      */
     public function update(UpdateRequest $request, Product $product)
     {
-        $product->update($request->all());
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/image"), $image_name);
+
+            $product->update($request->all() + [
+                'image' => $image_name
+            ]);
+        }
+        else {
+            $product->update($request->all());
+        }
+        
         return redirect()->route('products.index');
     }
 
