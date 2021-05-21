@@ -26,8 +26,10 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string|unique:products,name|max:255',
             'sell_price' => 'required',
-            'category_id' => 'integer|required|exists:App\Category,id',
-            'provider_id' => 'integer|required|exists:App\Provider,id',
+            // 'category_id' => 'integer|required|exists:App\Category,id',
+            // 'provider_id' => 'integer|required|exists:App\Provider,id',
+            'category_id' => 'integer|required',
+            'provider_id' => 'integer|required',
         ];
     }
 

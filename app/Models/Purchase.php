@@ -14,6 +14,7 @@ class Purchase extends Model
         'user_id',
         'purchase_date',
         'tax',
+        'total',
         'status',
         'picture'
     ];

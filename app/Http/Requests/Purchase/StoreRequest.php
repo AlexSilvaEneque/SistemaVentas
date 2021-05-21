@@ -24,10 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'provider_id' => 'required',
-            'user_id' => 'required',
-            'purchase_date' => 'required',
-            'tax' => 'required'
+            
         ];
     }
 }

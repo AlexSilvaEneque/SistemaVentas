@@ -19,36 +19,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Route::get('/', function () {
-//     return view('auth.login');
+//     return view('welcome');
 // });
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+Route::get('/', function () {
+    return view('auth.login');
+});
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
-//     return view('layouts.admin');
-// })->name('dash');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
+    return view('layouts.admin');
+})->name('dash');
 
-// categories
-Route::resource('categories', CategoryController::class);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    // categories
+    Route::resource('categories', CategoryController::class);
 
-// clients
-Route::resource('clients', ClientController::class);
+    // clients
+    Route::resource('clients', ClientController::class);
 
-// products
-Route::resource('products', ProductController::class);
+    // products
+    Route::resource('products', ProductController::class);
 
-// providers
-Route::resource('providers', ProviderController::class);
+    // providers
+    Route::resource('providers', ProviderController::class);
 
-// purhcases
-Route::resource('purchases', PurchaseController::class);
+    // purhcases
+    Route::resource('purchases', PurchaseController::class);
 
-// sales
-Route::resource('sales', SaleController::class);
+    // sales
+    Route::resource('sales', SaleController::class);
+});

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Purchase\StoreRequest;
 use App\Http\Requests\Purchase\UpdateRequest;
+use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
@@ -29,7 +32,8 @@ class PurchaseController extends Controller
     public function create()
     {
         $providers = Provider::get();
-        return view('admin.purchase.create', compact('providers'));
+        $products = Product::get();
+        return view('admin.purchase.create', compact('providers', 'products'));
     }
 
     /**
@@ -40,7 +44,10 @@ class PurchaseController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $purchase = Purchase::create($request->all());
+        $purchase = Purchase::create($request->all()+[
+            'user_id' => Auth::user()->id,
+            'purchase_date' => Carbon::now('America/Lima')
+        ]);
 
         foreach ($request->product_id as $key => $product) {
             $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key], "price" => $request->price[$key]);
@@ -58,8 +65,12 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        $purchase = Purchase::find($purchase);
-        return view('admin.purchase.show', compact('purchase'));
+        $subtotal = 0;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $key => $purchaseDetail) {
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+        return view('admin.purchase.show', compact('purchase', 'purchaseDetails', 'subtotal'));
     }
 
     /**
