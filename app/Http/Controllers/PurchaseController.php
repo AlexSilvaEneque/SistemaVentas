@@ -107,4 +107,8 @@ class PurchaseController extends Controller
     {
         
     }
+
+    public function pdf(Purchase $purchase) {
+        
+    }
 }

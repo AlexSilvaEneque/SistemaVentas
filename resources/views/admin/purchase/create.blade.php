@@ -175,11 +175,11 @@
         function eliminar(index) {
             total = total - subtotal[index];
             total_impuesto = (total * impuesto) / 100;
-            tottal_pagar_html = total + total_impuesto;
+            total_pagar_html = total + total_impuesto;
             $('#total').html(total);
             $('#total_impuesto').html(total_impuesto);
-            $('#total_pagar_html').html(tottal_pagar_html);
-            $('#total_pagar').val(tottal_pagar_html.toFixed(2));
+            $('#total_pagar_html').html(total_pagar_html);
+            $('#total_pagar').val(total_pagar_html.toFixed(2));
             $('#fila'+index).remove();
             evaluar();
         }

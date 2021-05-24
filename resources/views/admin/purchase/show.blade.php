@@ -62,7 +62,7 @@
                                 <p class="text-right">TOTAL:</p>
                             </th>
                             <th>
-                                <p class="text-right">S/ {{$purchase->total,2}}</p>
+                                <p class="text-right">S/ {{number_format($purchase->total,2)}}</p>
                             </th>
                         </tr>
                     </tfoot>

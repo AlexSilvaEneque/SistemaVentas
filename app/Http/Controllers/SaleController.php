@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
 use App\Models\Client;
+use App\Models\Product;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
@@ -24,7 +27,8 @@ class SaleController extends Controller
     public function create()
     {
         $clients = Client::get();
-        return view('admin.sale.create', compact('clients'));
+        $products = Product::get();
+        return view('admin.sale.create', compact('clients', 'products'));
     }
 
     /**
@@ -35,7 +39,10 @@ class SaleController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $sale = Sale::create($request->all());
+        $sale = Sale::create($request->all()+[
+            'user_id' => Auth::user()->id,
+            'sale_date' => Carbon::now('America/Lima')
+        ]);
 
         foreach ($request->product_id as $key => $product) {
             $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key], "price" => $request->price[$key], "discount" => $request->discount[$key]);
@@ -53,8 +60,12 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        $sale = Sale::find($sale);
-        return view('admin.sale.show', compact('sale'));
+        $subtotal = 0;
+        $saleDetails = $sale->saleDetails;
+        foreach ($saleDetails as $key => $saleDetail) {
+            $subtotal += ($saleDetail->quantity *  $saleDetail->price) - (($saleDetail->quantity * $saleDetail->price)*$saleDetail->discount/100);
+        }
+        return view('admin.sale.show', compact('sale', 'saleDetails', 'subtotal'));
     }
 
     /**
