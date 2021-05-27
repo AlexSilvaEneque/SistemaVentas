@@ -29,8 +29,7 @@
                                 <td> {{$purchase->status}} </td>
                                 <td>
                                     <div class="d-flex">
-                                        {{-- <a href="#" class="text-success mr-1"><i class="far fa-edit"></i></a> --}}
-                                        <a href="#" class="text-primary mr-1"><i class="far fa-file-pdf"></i></a>
+                                        <a href="{{ route('purchases.pdf', $purchase) }}" class="text-primary mr-1"><i class="far fa-file-pdf"></i></a>
                                         <a href="#" class="text-secondary mr-1"><i class="fas fa-print"></i></a>
                                         <a href="{{ route('purchases.show', $purchase) }}" class="text-info"><i class="far fa-eye"></i></a>
                                     </div>
