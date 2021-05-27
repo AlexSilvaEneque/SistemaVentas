@@ -116,6 +116,6 @@ class PurchaseController extends Controller
             $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
         }
         $pdf = \PDF::loadView('admin.purchase.pdf', compact('subtotal','purchaseDetails', 'purchase'));
-        return $pdf->stream();
+        return $pdf->download('Reporte_de_compra_'. $purchase->id .'.pdf');;
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
 use App\Models\Client;
 use App\Models\Product;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,10 +75,10 @@ class SaleController extends Controller
      * @param  \App\Models\Sale  $Sale
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $Sale)
+    public function edit(Sale $sale)
     {
-        $clients = Client::get();
-        return view('admin.sale.show', compact('clients'));
+        // $clients = Client::get();
+        // return view('admin.sale.show', compact('clients'));
     }
 
     /**
@@ -101,5 +102,15 @@ class SaleController extends Controller
     public function destroy(Sale $Sale)
     {
         
+    }
+
+    public function pdf(Sale $sale) {
+        $subtotal = 0;
+        $saleDetails = $sale->saleDetails;
+        foreach ($saleDetails as $key => $saleDetail) {
+            $subtotal += ($saleDetail->quantity *  $saleDetail->price) - (($saleDetail->quantity * $saleDetail->price)*$saleDetail->discount/100);
+        }
+        $pdf = \PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
+        return $pdf->download('Reporte_de_venta_'. $sale->id .'.pdf');
     }
 }
