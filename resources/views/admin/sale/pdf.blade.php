@@ -69,7 +69,7 @@
             <thead>
                 <tr>
                     <th>DATOS DEL VENDEDOR</th>
-                    <th>NÚMERO DE VENTA</th>
+                    <th>NÚMERO DE VENTA<th>
                 </tr>
             </thead>
             <tr class="tr-body">

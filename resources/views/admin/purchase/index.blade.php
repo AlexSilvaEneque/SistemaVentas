@@ -10,7 +10,7 @@
         <a href="{{ route('purchases.create') }}" class="btn btn-outline-primary"><i class="fas fa-plus-circle" style="font-size: 1.2em;"></i></a>
         <div class="card mt-2">
             <div class="card-body">
-                <table class="table table-hover">
+                <table id="purchase" class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -44,8 +44,39 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#purchase').DataTable({
+                responsive: true,
+                autoWidth: false,
+                "language": {
+                    "lengthMenu": "Mostrar "+
+                            `<select class = "custom-select custom-select.sm form-control form-control-sm">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="-1">Todo</option>
+                            </select>`
+                    +" registros por página",
+                    "zeroRecords": "No se encontró nada - lo sentimos",
+                    "info": "Mostrando la página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available",
+                    "infoFiltered": "(filtrando de _MAX_ registros totales)",
+                    "search": "Buscar:"
+                }
+            });
+        });
+    </script>
 @stop
