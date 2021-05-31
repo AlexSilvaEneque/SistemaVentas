@@ -22,7 +22,7 @@
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <td> {{$category->id}} </td>
+                            <td> <a href="{{ route('categories.show', $category) }}"> {{$category->id}} </a></td>
                             <td> {{$category->name}} </td>
                             <td> {{$category->description}} </td>
                             <td>

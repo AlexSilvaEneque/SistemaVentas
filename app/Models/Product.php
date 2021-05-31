@@ -17,8 +17,13 @@ class Product extends Model
         'sell_price',
         'status',
         'category_id',
-        'provider_id'
+        'provider_id',
+        'slug'
     ];
+
+    public function getRouteKeyName() {
+        return 'slug';
+    }
 
     // muchos a uno
     // muchos productos pertencen a una categoria

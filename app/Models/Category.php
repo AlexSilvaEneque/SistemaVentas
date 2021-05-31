@@ -11,8 +11,15 @@ class Category extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'description'
     ];
+
+    // rutas amigables
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     // uno a muchos
     public function products() {

@@ -42,6 +42,7 @@ class CategoryController extends Controller
 
         $category->name = $request->name;
         $category->description = $request->description;
+        $category->slug =  $request->slug;
 
         $category->save();
         return redirect()->route('categories.index');
@@ -55,7 +56,6 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $category = Category::find($category);
         return view('admin.category.show', compact('category'));
     }
 

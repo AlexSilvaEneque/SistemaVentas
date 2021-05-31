@@ -14,8 +14,13 @@ class Provider extends Model
         'email',
         'ruc_number',
         'address',
-        'phone'
+        'phone',
+        'slug'
     ];
+
+    public function getRouteKeyName() {
+        return 'slug';
+    }
 
     // uno a muchos
     public function products() {

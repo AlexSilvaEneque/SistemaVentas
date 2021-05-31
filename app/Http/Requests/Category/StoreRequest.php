@@ -26,6 +26,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'description' => 'nullable|string|max:255',
+            'slug' => 'required'
         ];
     }
 
@@ -36,6 +37,7 @@ class StoreRequest extends FormRequest
             'name.max' => 'Solo se permiten 50 caracteres',
             'description.string' => 'El valor ingresado no es correcto',
             'description.max' => 'Solo se permiten 255 caracteres',
+            'slug.required' => 'Este campo es requerido'
         ];
     }
 }

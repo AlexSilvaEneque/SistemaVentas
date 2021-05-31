@@ -19,6 +19,7 @@
                             <small class="text-danger">*{{$message}}</small>
                         @enderror
                     </div>
+                    <input type="text" name="slug" id="slug">
                     <div class="form-group">
                         <label for="sell_price">Sale price</label>
                         <input type="number" class="form-control" name="sell_price" id="sell_price" value="{{old('sell_price')}}">
@@ -63,4 +64,14 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#name").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+    </script>
 @stop

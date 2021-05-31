@@ -38,14 +38,16 @@ class ProviderController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $provider = new Provider;
+        /*$provider = new Provider;
         $provider->name = $request->name;
         $provider->email = $request->email;
         $provider->ruc_number = $request->ruc_number;
         $provider->address = $request->address;
         $provider->phone = $request->phone;
 
-        $provider->save();
+        $provider->save();*/
+        Provider::create($request->all());
+
         return redirect()->route('providers.index');
     }
 

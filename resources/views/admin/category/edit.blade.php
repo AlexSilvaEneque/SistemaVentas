@@ -10,7 +10,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form action="{{route('categories.update', $category)}}" method="POST">
+                <form action="{{route('categories.update', $category)}}" method="POST" autocomplete="off">
                     @csrf
                     @method('put')
                     <div class="form-group">
@@ -20,6 +20,7 @@
                             <small class="text-danger">*{{$message}}</small>
                         @enderror
                     </div>
+                    <input type="hidden" name="slug" id="slug" value="{{ old('slug', $category->slug) }}">
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" id="description" class="form-control" rows="4" placeholder="Description">{{old('description', $category->description)}}</textarea>
@@ -41,4 +42,14 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#name").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+    </script>
 @stop

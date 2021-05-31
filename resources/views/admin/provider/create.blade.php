@@ -20,6 +20,9 @@
                                 <small class="text-danger">*{{$message}}</small>
                             @enderror
                         </div>
+
+                        <input type="hidden" name="slug" id="slug">
+
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}">
@@ -63,4 +66,14 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $("#name").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+    </script>
 @stop

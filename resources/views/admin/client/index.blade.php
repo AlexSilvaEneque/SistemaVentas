@@ -35,7 +35,7 @@
                     @foreach ($clients as $client)
                         <tr>
                             <td> {{$client->id}} </td>
-                            <td> <a href="{{route('clients.show', $client->id)}}"> {{$client->name}} </a></td>
+                            <td> <a href="{{route('clients.show', $client)}}"> {{$client->name}} </a></td>
                             <td> {{$client->dni}} </td>
                             <td> {{$client->address}} </td>
                             <td> {{$client->phone}} </td>

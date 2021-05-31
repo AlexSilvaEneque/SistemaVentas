@@ -15,6 +15,12 @@ class Client extends Model
         'ruc',
         'address',
         'phone',
-        'email'
+        'email',
+        'slug'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

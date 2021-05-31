@@ -29,7 +29,8 @@ class StoreRequest extends FormRequest
             'ruc' => 'max:11|min:11|unique:clients,ruc',
             'address' => 'string|max:255',
             'phone' => 'string|max:9|min:9|unique:clients,phone',
-            'email' => 'string|email:rfc,dns|unique:clients,email'
+            'email' => 'string|email:rfc,dns|unique:clients,email',
+            'slug' => 'required'
         ];
     }
 
@@ -57,7 +58,9 @@ class StoreRequest extends FormRequest
 
             'email.string' => 'El valor ingresado no es válido.',
             'email.email' => 'Ingrese una dirección de correo electrónico correcta.',
-            'email.unique' => 'El correo electrónico ingresado, ya se encuentra en uso.'
+            'email.unique' => 'El correo electrónico ingresado, ya se encuentra en uso.',
+
+            'slug.required' => 'Este campo es obligatorio.'
         ];        
     }
 }

@@ -20,6 +20,7 @@ class CreateProvidersTable extends Migration
             $table->string('ruc_number')->unique();
             $table->string('address')->nullable();
             $table->string('phone');
+            $table->string('slug');
             $table->timestamps();
         });
     }

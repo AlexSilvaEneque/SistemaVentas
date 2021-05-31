@@ -38,15 +38,7 @@ class ClientController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $client = new Client;
-        $client->name = $request->name;
-        $client->dni = $request->dni;
-        $client->ruc = $request->ruc;
-        $client->address = $request->address;
-        $client->phone = $request->phone;
-        $client->email = $request->email;
-
-        $client->save();
+        Client::create($request->all());
         return redirect()->route('clients.index');
     }
 

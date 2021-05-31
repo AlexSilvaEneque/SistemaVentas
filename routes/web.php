@@ -49,7 +49,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // purhcases
     Route::resource('purchases', PurchaseController::class);
     Route::get('purchases/pdf/{purchase}', [PurchaseController::class, 'pdf'])->name('purchases.pdf');
-    Route::get('purchase/download', [PurchaseController:: class, 'download'])->name('purchases.download');
 
     // sales
     Route::resource('sales', SaleController::class);
