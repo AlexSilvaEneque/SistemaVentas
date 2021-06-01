@@ -15,6 +15,7 @@
                     <div class="for-group">
                         <label for="provider_id">Provider</label>
                         <select name="provider_id" id="provider_id" class="form-control">
+                            <option value="" disabled selected>Seleccione el proveedor</option>
                             @foreach ($providers as $provider)
                                 <option value="{{ $provider->id }}"> {{$provider->name}} </option>                                
                             @endforeach
@@ -30,6 +31,7 @@
                     <div class="form-group">
                         <label for="provider_id">Product</label>
                         <select name="product_id" id="product_id" class="form-control">
+                            <option value="" disabled selected>Seleccione un producto</option>
                             @foreach ($products as $product)
                                 <option value="{{ $product->id }}"> {{$product->name}} </option>                                
                             @endforeach
@@ -115,6 +117,7 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
         $(document).ready(function () {
@@ -146,7 +149,11 @@
                 evaluar();
                 $('#detalles').append(fila);
             } else {
-                console.log('error');
+                Swal.fire({
+                    title: 'Error',
+                    icon: 'error',
+                    text: 'Agregue producto(s) a la compra'
+                });
             }
         }
 

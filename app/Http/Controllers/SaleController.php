@@ -113,4 +113,15 @@ class SaleController extends Controller
         $pdf = \PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
         return $pdf->download('Reporte_de_venta_'. $sale->id .'.pdf');
     }
+
+    public function status(Sale $sale) {
+        if ($sale->status == 'VALID') {
+            $sale->update(['status' => 'CANCELED']);
+            return redirect()->back();
+        } else {
+            $sale->update(['status' => 'VALID']);
+            return redirect()->back();
+        }
+
+    }
 }

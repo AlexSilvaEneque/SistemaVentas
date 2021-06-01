@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PrinterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
 use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\App;
@@ -47,10 +50,39 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('providers', ProviderController::class);
 
     // purhcases
-    Route::resource('purchases', PurchaseController::class);
+    Route::resource('purchases', PurchaseController::class)->except([
+        'edit', 'update', 'destroy'
+    ]);
+
     Route::get('purchases/pdf/{purchase}', [PurchaseController::class, 'pdf'])->name('purchases.pdf');
 
+    // ruta para cargar imágenes
+    Route::get('purchases/upload/{purchase}', [PurchaseController::class, 'upload'])->name('purchases.upload');
+
     // sales
-    Route::resource('sales', SaleController::class);
+    Route::resource('sales', SaleController::class)->except([
+        'edit', 'update', 'destroy'
+    ]);
     Route::get('sales/pdf/{sale}', [SaleController::class, 'pdf'])->name('sales.pdf');
+
+    // business
+    Route::resource('business', BusinessController::class)->only([
+        'index', 'update'
+    ]);
+
+    // printer
+    Route::resource('printers', PrinterController::class)->only([
+        'index', 'update'
+    ]);
+
+    Route::get('change_status/products/{product}', [ProductController::class, 'status'])->name('products.status');
+    Route::get('change_status/purchases/{purchase}', [PurchaseController::class, 'status'])->name('purchases.status');
+    Route::get('change_status/sales/{sale}', [SaleController::class, 'status'])->name('sales.status');
+
+    // Rutas para reportes de ventas
+    Route::get('sales/reports_day', [ReportController::class, 'day'])->name('reports.day');
+
+    Route::get('sales/reports_date', [ReportController::class, 'date'])->name('reports.date');
+
+    Route::post('sales/reports_date', [ReportController::class, 'results'])->name('reports.results');
 });

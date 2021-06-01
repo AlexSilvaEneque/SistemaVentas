@@ -16,6 +16,7 @@
                         <div class="form-group col-md-6">
                             <label for="client_id">Client</label>
                             <select name="client_id" id="client_id" class="form-control">
+                                <option value="" disabled selected>Seleccione el proveedor</option>
                                 @foreach ($clients as $client)
                                     <option value="{{ $client->id }}">{{ $client->name }}</option>
                                 @endforeach
@@ -165,7 +166,7 @@
                     Swal.fire({
                         type: 'error',
                         icon: 'error',
-                        'text': 'La cantidad solicitada supera al stock del producto'
+                        text: 'La cantidad solicitada supera al stock del producto'
                     });
                 }
                 
